@@ -1,0 +1,31 @@
+{
+	"name": "pauldro/minicli-v1-database",
+	"description": "Minicli Extenders with utilities",
+	"type": "library",
+	"keywords": ["php", "cli", "php-cli", "minicli"],
+	"license": "MIT",
+	"minimum-stability": "dev",
+	"authors": [
+		{
+			"name": "Paul Gomez",
+			"email": "pauldro952@hotmail.com"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+			"Pauldro\\Minicli\\Database\\": "src/"
+		}
+	},
+	"require": {
+		"minicli/minicli": "v2.0.x-dev",
+		"pauldro/minicli-v1": "dev-main",
+		"propel/propel": "dev-master#3087361bd27f3598f3ecd70e9fd272a5c2575b88",
+		"sergeytsalkov/meekrodb": "dev-master"
+	},
+	"require-dev": {
+		"minicli/minicli": "v2.0.x-dev",
+		"pauldro/minicli-v1": "dev-main",
+		"propel/propel": "dev-master#3087361bd27f3598f3ecd70e9fd272a5c2575b88",
+		"sergeytsalkov/meekrodb": "dev-master"
+	}
+}
