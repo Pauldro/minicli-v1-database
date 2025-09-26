@@ -25,7 +25,7 @@
 	"require-dev": {
 		"minicli/minicli": "v2.0.x-dev",
 		"pauldro/minicli-v1": "dev-main",
-		"propel/propel": "dev-master#3087361bd27f3598f3ecd70e9fd272a5c2575b88",
-		"sergeytsalkov/meekrodb": "dev-master"
+		"sergeytsalkov/meekrodb": "dev-master",
+		"propel/propel": "dev-master#3087361bd27f3598f3ecd70e9fd272a5c2575b88"
 	}
 }
