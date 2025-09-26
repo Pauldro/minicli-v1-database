@@ -7,6 +7,7 @@ use Pauldro\Minicli\Services\Env;
  * @property Env $env
  */
 class CredentialsEnvParser {
+    const REQUIRED = ['HOST', 'PORT', 'USER', 'PASSWORD'];
     const SUFFIXES = ['HOST', 'PORT', 'USER', 'PASSWORD', 'PROPEL.CONNECTION.NAME', 'PROPEL.ISDEFAULT'];
 
     public function __construct(Env $env) {
@@ -27,7 +28,12 @@ class CredentialsEnvParser {
             $vars[] = "$prefix.$suffix";
         }
 
-        $this->env->required($vars);
+        $required = [];
+        foreach (self::REQUIRED as $suffix) {
+            $required[] = "$prefix.$suffix";
+        }
+
+        $this->env->required($required);
 
         $conf = new Credentials();
         $conf->name = $this->env->get("$prefix.NAME");

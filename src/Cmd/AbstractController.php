@@ -12,7 +12,7 @@ use Pauldro\Minicli\Util\SessionVars;
  * @property CredentialsEnvParser $dbCredentialsParser
  */
 abstract class AbstractController extends ParentController {
-    public function init() : bool
+    protected function init() : bool
     {
         if (parent::init() === false) {
             return false;
