@@ -5,12 +5,11 @@
 	"keywords": ["php", "cli", "php-cli", "minicli"],
 	"license": "MIT",
 	"minimum-stability": "dev",
-	"authors": [
-		{
-			"name": "Paul Gomez",
-			"email": "pauldro952@hotmail.com"
+	"config": {
+		"platform": {
+			"php": "7.4"
 		}
-	],
+	},
 	"autoload": {
 		"psr-4": {
 			"Pauldro\\Minicli\\Database\\": "src/"

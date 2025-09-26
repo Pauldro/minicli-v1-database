@@ -18,7 +18,7 @@ class Propel {
 	 */
 	public static function propelConnectionManager(Credentials $db) : ConnectionManagerSingle 
 	{
-		$manager = new ConnectionManagerSingle();
+		$manager = new ConnectionManagerSingle($db->propelName);
 		$manager->setConfiguration(self::propelConfiguration($db));
 		return $manager;
 	}
