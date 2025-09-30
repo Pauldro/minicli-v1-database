@@ -20,7 +20,7 @@ abstract class AbstractQueryWrapper {
 	1. Constructors
 ============================================================= */
 	/** @return static */
-	public static function instance() : static
+	public static function instance()
 	{
 		if (empty(static::$instance)) {
 			static::$instance = new static();

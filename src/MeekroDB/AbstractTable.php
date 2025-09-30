@@ -30,11 +30,11 @@ abstract class AbstractTable {
 	const REGEX_TABLE_DOESNT_EXIST = "/(Table)\s\'\w+\.\w+\'\s(doesn't exist)/";
 
 	protected static $instance;
-	protected MeekroDB $meekrodb;
+	protected $db;
 
 
 	/** @return static */
-	public static function instance() : static
+	public static function instance()
 	{
 		if (empty(static::$instance)) {
 			$instance = new static();

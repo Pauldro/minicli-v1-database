@@ -12,8 +12,9 @@ use Pauldro\Minicli\Database\Propel\Propel;
  * DatabaseConnector
  * Makes Database Connection
  *
- * @property PDO|false $pdo
- * @property MeekroDB $meekrodb
+ * @property Credentials      $db
+ * @property PDO|false        $pdo
+ * @property MeekroDB         $meekrodb
  * @property PropelConnection $propel
  */
 class DatabaseConnector {
@@ -30,8 +31,25 @@ class DatabaseConnector {
 	}
 
 	public function __sleep() {
-		return ['meekrodb', 'db', 'propel', 'name'];
+		return [];
 	}
+
+	public function __serialize(): array
+    {
+        // When serializing, store the connection parameters, not the PDO object itself.
+        return [
+            'creds' => $this->db,
+            'name' => $this->name,
+        ];
+    }
+
+	public function __unserialize(array $data): void
+    {
+        // When unserializing, reconstruct the connection using the stored parameters.
+        $this->db = $data['creds'];
+        $this->name = $data['name'];
+        $this->connect();
+    }
 
 /* =============================================================
 	Public
@@ -60,7 +78,7 @@ class DatabaseConnector {
 	 * Return PDO Connection
 	 * @return PDO|bool
 	 */
-	public function pdo() : mixed
+	public function pdo()
     {
 		if (empty($this->pdo)) {
 			return false;
@@ -72,7 +90,7 @@ class DatabaseConnector {
 	 * Return Meekro DB Connection
 	 * @return MeekroDB|bool
 	 */
-	public function meekrodb() : mixed
+	public function meekrodb()
     {
 		if (empty($this->meekrodb)) {
 			return false;
@@ -83,7 +101,7 @@ class DatabaseConnector {
 	/**
 	 * @return PropelConnection|bool
 	 */
-    public function propel() : mixed
+    public function propel()
 	{
         if (empty($this->propel)) {
 			return false;
