@@ -220,7 +220,10 @@ abstract class AbstractTable {
 		if (array_key_exists('updated', static::COLUMNS)) {
 			$data->set('updated', date(static::FORMAT_DATETIME));
 		}
-		return boolval($this->db->update(static::TABLE, $data->data, $this->getRecordPrimaryKeyValuesArray($data)));
+		if ($data->isTrackingChanges() === false) {
+			return boolval($this->db->update(static::TABLE, $data->data, $this->getRecordPrimaryKeyValuesArray($data)));
+		}
+		return boolval($this->db->update(static::TABLE, $data->getCurrentChanges(), $this->getRecordPrimaryKeyValuesArray($data)));
 	}
 
 	/**
