@@ -132,6 +132,11 @@ abstract class AbstractTable {
 /* =============================================================
 	Read Functions
 ============================================================= */
+	public function lastInsertId() : mixed
+	{
+		return $this->db->insertId();
+	}
+	
 	/**
 	 * Return if Table Exists
 	 * @return bool
