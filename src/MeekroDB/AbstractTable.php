@@ -132,7 +132,7 @@ abstract class AbstractTable {
 /* =============================================================
 	Read Functions
 ============================================================= */
-	public function lastInsertId() : mixed
+	public function lastInsertId()
 	{
 		return $this->db->insertId();
 	}
